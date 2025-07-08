@@ -12,7 +12,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   splashLauncherEvent (SplashLauncherEvent event, Emitter emit) async {
     emit(SplashInitial());
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     // Checking if Config url is entered previously
     bool isLoginComplete = await SharedPreferenceHelper.instance.getIsLogin();

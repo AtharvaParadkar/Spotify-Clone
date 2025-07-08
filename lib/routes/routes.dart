@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/dashboard/ui/dashboard_screen.dart';
+import 'package:spotify_clone/login/ui/login_signup_screen.dart';
 
 import '../constants/string_constants.dart';
 import '../login/ui/login_screen.dart';
@@ -31,6 +32,19 @@ class RouteGenerator{
                 slideTransition(context, animation, child),
         );
 
+        case RouteConstants.loginSignUpScreen:
+         if (args is List<dynamic>) {
+          return PageRouteBuilder(
+            pageBuilder: (context, animation, _) => LoginSignupScreen(
+              isSignUp: args[0] as bool,
+            ),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                    slideTransition(context, animation, child),
+          );
+        }
+         return _errorRoute();
+
       default:
         return _errorRoute();
     }
@@ -50,9 +64,9 @@ class RouteGenerator{
 
 SlideTransition slideTransition(
     BuildContext context, Animation<double> animation, Widget child) {
-  const begin = Offset(0.0, 0.0);
+  const begin = Offset(1.0, 0.0);
   const end = Offset.zero;
-  const curve = Curves.easeInOut;
+  const curve = Curves.easeIn;
   var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
   var offsetAnimation = animation.drive(tween);
 
@@ -67,4 +81,5 @@ class RouteConstants {
   static const String splashScreen = "/";
   static const String loginScreen = "/Login";
   static const String dashboardScreen = "/Dashboard";
+  static const String loginSignUpScreen = "/LoginSignUp";
 }

@@ -5,4 +5,5 @@ class ImagePathConstants {
   /// Logo
   static const String splashLogo = "${_baseAssetPath}spotify-logo.png";
   static const String loginLogo = "${_baseAssetPath}spotify-login-logo.png";
+  static const String googleLogo = "${_baseAssetPath}google.png";
 }
