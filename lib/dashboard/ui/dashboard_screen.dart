@@ -5,6 +5,7 @@ import 'package:spotify_clone/constants/assets_path_constants.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
 import 'package:spotify_clone/dashboard/bloc/dashboard_bloc.dart';
 import 'package:spotify_clone/dashboard/ui/create_tab.dart';
+import 'package:spotify_clone/dashboard/ui/drawer.dart';
 import 'package:spotify_clone/dashboard/ui/home_tab.dart';
 import 'package:spotify_clone/dashboard/ui/search_tab.dart';
 import 'package:spotify_clone/dashboard/ui/your_library_tab.dart';
@@ -20,6 +21,8 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   PageController? pageController;
   final DashboardBloc _bloc = DashboardBloc();
+  // scaffold key for handle drawer
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -40,20 +43,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
         }
 
         return Scaffold(
+          key: _scaffoldKey,
           backgroundColor: CustomColors.bgColor,
           appBar: AppBar(
             backgroundColor: CustomColors.bgColor,
-            title: Container(
-              padding: EdgeInsets.all(0),
-              margin: EdgeInsets.all(0),
-              height: 5.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.amber
+            leading: GestureDetector(
+              onTap: () => _scaffoldKey.currentState?.openDrawer(),
+              child: Container(
+                padding: EdgeInsets.all(0),
+                margin: EdgeInsets.all(0),
+                height: 7.h,
+                width: 7.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage(ImagePathConstants.splashLogo),
+                      fit: BoxFit.cover),
+                ),
               ),
-              child: Image.asset(ImagePathConstants.splashLogo,fit: BoxFit.cover,height: 5.h,),
             ),
           ),
+          drawer: ProfileDrawer(),
           bottomNavigationBar: BlocBuilder<DashboardBloc, DashboardState>(
             bloc: _bloc,
             builder: (context, state) {
@@ -64,49 +74,81 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () => _bloc.add(DashboardTabSwitchEvent(selectedTabIndex: 0)),
+                      onTap: () => _bloc
+                          .add(DashboardTabSwitchEvent(selectedTabIndex: 0)),
                       child: SizedBox(
                         width: 19.w,
                         child: Column(
                           children: [
-                            Icon(Icons.home,color: Colors.white,),
-                            Text('Home',style: CommonTextStyles.regular(9.spa, Colors.white),),
+                            Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Home',
+                              style:
+                                  CommonTextStyles.regular(9.spa, Colors.white),
+                            ),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
-                      onTap: () => _bloc.add(DashboardTabSwitchEvent(selectedTabIndex: 1)),
+                      onTap: () => _bloc
+                          .add(DashboardTabSwitchEvent(selectedTabIndex: 1)),
                       child: SizedBox(
                         width: 19.w,
                         child: Column(
                           children: [
-                            Icon(Icons.search,color: Colors.white,),
-                            Text('Search',style: CommonTextStyles.regular(9.spa, Colors.white),),
+                            Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Search',
+                              style:
+                                  CommonTextStyles.regular(9.spa, Colors.white),
+                            ),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
-                      onTap: () => _bloc.add(DashboardTabSwitchEvent(selectedTabIndex: 2)),
+                      onTap: () => _bloc
+                          .add(DashboardTabSwitchEvent(selectedTabIndex: 2)),
                       child: SizedBox(
                         width: 19.w,
                         child: Column(
                           children: [
-                            Icon(Icons.library_books,color: Colors.white,),
-                            Text('YourLibrary',style: CommonTextStyles.regular(9.spa, Colors.white),),
+                            Icon(
+                              Icons.library_books,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'YourLibrary',
+                              style:
+                                  CommonTextStyles.regular(9.spa, Colors.white),
+                            ),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
-                      onTap: () => _bloc.add(DashboardTabSwitchEvent(selectedTabIndex: 3)),
+                      onTap: () => _bloc
+                          .add(DashboardTabSwitchEvent(selectedTabIndex: 3)),
                       child: SizedBox(
                         width: 19.w,
                         child: Column(
                           children: [
-                            Icon(Icons.add,color: Colors.white,),
-                            Text('Create',style: CommonTextStyles.regular(9.spa, Colors.white),),
+                            Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Create',
+                              style:
+                                  CommonTextStyles.regular(9.spa, Colors.white),
+                            ),
                           ],
                         ),
                       ),
