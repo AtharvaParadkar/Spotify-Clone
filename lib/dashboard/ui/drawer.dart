@@ -24,39 +24,42 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 10),
-              child: SizedBox(
-                height: 10.h,
-                child: DrawerHeader(
-                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(0),
-                          margin: EdgeInsets.all(0),
-                          height: 6.h,
-                          width: 13.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage(ImagePathConstants.profileImage),
-                              fit: BoxFit.contain,
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, RouteConstants.viewProfileScreen),
+                child: SizedBox(
+                  height: 10.h,
+                  child: DrawerHeader(
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(0),
+                            margin: EdgeInsets.all(0),
+                            height: 6.h,
+                            width: 13.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(ImagePathConstants.profileImage),
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 4.w),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Atharva',style: CommonTextStyles.bold(14.spa, CustomColors.whiteTextColor),),
-                            Text('View profile',style: CommonTextStyles.light(11.spa, CustomColors.whiteTextColor),),
-                          ],
-                        ),
-                      ],
+                          SizedBox(width: 4.w),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Atharva',style: CommonTextStyles.bold(14.spa, CustomColors.whiteTextColor),),
+                              Text('View profile',style: CommonTextStyles.light(11.spa, CustomColors.whiteTextColor),),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -98,7 +101,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
               iconColor: CustomColors.whiteTextColor,
             ),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, RouteConstants.settingsScreen),
+              onTap: () => Navigator.popAndPushNamed(context, RouteConstants.settingsScreen),
               leading: Icon(Icons.settings_outlined,size: 3.h,),
               title: Text('Settings and privacy',style: CommonTextStyles.bold(13.spa, CustomColors.whiteTextColor),),
               textColor: CustomColors.whiteTextColor,
