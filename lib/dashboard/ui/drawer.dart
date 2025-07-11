@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/routes/routes.dart';
 import 'package:spotify_clone/utils/common_textstyles.dart';
 
 import '../../constants/assets_path_constants.dart';
@@ -97,7 +98,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
               iconColor: CustomColors.whiteTextColor,
             ),
             ListTile(
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(context, RouteConstants.settingsScreen),
               leading: Icon(Icons.settings_outlined,size: 3.h,),
               title: Text('Settings and privacy',style: CommonTextStyles.bold(13.spa, CustomColors.whiteTextColor),),
               textColor: CustomColors.whiteTextColor,
