@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:spotify_clone/routes/routes.dart';
 
+import 'dashboard/bloc/dashboard_bloc.dart';
+
 void main() {
   runApp(
-    Sizer(
-      builder: (context, orientation, deviceType) {
-        return const Spotify();  // Your app widget here
-      },
+    BlocProvider(
+      create: (context) => DashboardBloc(),
+      child: Sizer(
+        builder: (context, orientation, deviceType) {
+          return const Spotify(); // Your app widget here
+        },
+      ),
     ),
   );
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/dashboard/ui/dashboard_bottom_nav_bar.dart';
 import 'package:spotify_clone/routes/routes.dart';
 import 'package:spotify_clone/utils/common_textstyles.dart';
 import 'package:spotify_clone/utils/shared_prefs.dart';
@@ -30,6 +31,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       },
       child: Scaffold(
         backgroundColor: CustomColors.bgColor,
+        bottomNavigationBar: DashboardBottomNavBar(),
         appBar: AppBar(
           backgroundColor: CustomColors.bgDrawerColor,
           centerTitle: true,

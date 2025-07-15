@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
+import 'package:spotify_clone/dashboard/ui/dashboard_bottom_nav_bar.dart';
 
 import '../../constants/assets_path_constants.dart';
 import '../../utils/common_textstyles.dart';
@@ -17,6 +18,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.bgColor,
+      bottomNavigationBar: DashboardBottomNavBar(),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

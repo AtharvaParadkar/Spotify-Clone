@@ -15,11 +15,13 @@ class RouteGenerator{
     switch (settings.name) {
       case RouteConstants.splashScreen:
         return MaterialPageRoute(
+            settings: settings,
           builder: (_) => SplashScreen()
         );
 
       case RouteConstants.loginScreen:
         return PageRouteBuilder(
+          settings: settings,
             pageBuilder: (context, animation, _) => const LoginScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) =>
@@ -28,6 +30,7 @@ class RouteGenerator{
 
         case RouteConstants.dashboardScreen:
         return PageRouteBuilder(
+          settings: settings,
             pageBuilder: (context, animation, _) => const DashboardScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) =>
@@ -37,6 +40,7 @@ class RouteGenerator{
         case RouteConstants.loginSignUpScreen:
          if (args is List<dynamic>) {
           return PageRouteBuilder(
+            settings: settings,
             pageBuilder: (context, animation, _) => LoginSignupScreen(
               isSignUp: args[0] as bool,
             ),
@@ -49,6 +53,7 @@ class RouteGenerator{
 
       case RouteConstants.settingsScreen:
         return PageRouteBuilder(
+          settings: settings,
           pageBuilder: (context, animation, _) => const SettingsScreen(),
           transitionsBuilder:
               (context, animation, secondaryAnimation, child) =>
@@ -57,6 +62,7 @@ class RouteGenerator{
 
         case RouteConstants.viewProfileScreen:
         return PageRouteBuilder(
+          settings: settings,
           pageBuilder: (context, animation, _) => const ViewProfileScreen(),
           transitionsBuilder:
               (context, animation, secondaryAnimation, child) =>

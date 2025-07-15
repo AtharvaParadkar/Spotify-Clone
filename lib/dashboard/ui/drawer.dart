@@ -25,7 +25,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> {
             Padding(
               padding: EdgeInsets.only(top: 10),
               child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, RouteConstants.viewProfileScreen),
+                onTap: () => Navigator.popAndPushNamed(context, RouteConstants.viewProfileScreen),
                 child: SizedBox(
                   height: 10.h,
                   child: DrawerHeader(
