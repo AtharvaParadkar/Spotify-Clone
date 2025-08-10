@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:spotify_clone/constants/color_constants.dart';
 import 'package:spotify_clone/dashboard/ui/dashboard_bottom_nav_bar.dart';
+import 'package:spotify_clone/routes/routes.dart';
 
 import '../../constants/assets_path_constants.dart';
 import '../../utils/common_textstyles.dart';
@@ -109,7 +110,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () => Navigator.pushNamed(context, RouteConstants.editProfileScreen),
                           child: Container(
                             height: 4.5.h,
                             width: 17.w,

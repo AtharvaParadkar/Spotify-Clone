@@ -9,4 +9,5 @@ class CustomColors {
   static Color blackTextColor = const Color(0xFF000000);
   static Color greyTextColor = const Color(0xFFC8C8C8);
   static Color greenBtn = const Color(0xff4bec3b);
+  static Color bgDialogColor = const Color(0xFFF2EFD7);
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/dashboard/ui/dashboard_screen.dart';
 import 'package:spotify_clone/login/ui/login_signup_screen.dart';
+import 'package:spotify_clone/profile/ui/edit_profile_screen.dart';
 import 'package:spotify_clone/profile/ui/view_profile_screen.dart';
 import 'package:spotify_clone/settings/ui/settings_screen.dart';
 
@@ -69,6 +70,15 @@ class RouteGenerator{
               slideTransition(context, animation, child),
         );
 
+        case RouteConstants.editProfileScreen:
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, _) => const EditProfileScreen(),
+          transitionsBuilder:
+              (context, animation, secondaryAnimation, child) =>
+              slideTransition(context, animation, child),
+        );
+
       default:
         return _errorRoute();
     }
@@ -108,4 +118,5 @@ class RouteConstants {
   static const String loginSignUpScreen = "/LoginSignUp";
   static const String settingsScreen = "/Settings";
   static const String viewProfileScreen = "/ViewProfile";
+  static const String editProfileScreen = "/EditProfileScreen";
 }
