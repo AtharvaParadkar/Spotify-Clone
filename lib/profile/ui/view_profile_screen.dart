@@ -131,7 +131,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                         ),
                         SizedBox(width: 4.w),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: _profileOptions,
                           child: Transform.rotate(
                             angle: 90 * 3.1415926535 / 180,
                               child: Icon(Icons.keyboard_control_sharp,
@@ -149,4 +149,67 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
       ),
     );
   }
+
+  _profileOptions() {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: CustomColors.bgDrawerColor,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(height: 2.h),
+            _profileOptionsRow('Atharva', Icons.add),
+            SizedBox(height: 2.h),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: CustomColors.bgGreyColor, width: 2.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 2.h),
+            _profileOptionsRow('Share', Icons.share_outlined),
+            SizedBox(height: 2.h),
+            _profileOptionsRow('Preview profile', Icons.remove_red_eye_outlined),
+            SizedBox(height: 2.h),
+            _profileOptionsRow('Show Spotify Code', Icons.graphic_eq_outlined),
+            SizedBox(height: 3.h),
+          ],
+        );
+      },
+    );
+  }
+
+  _profileOptionsRow (String text, IconData icon) {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            text == "Atharva"
+            ? Container(
+              padding: EdgeInsets.all(0),
+              margin: EdgeInsets.all(0),
+              height: 6.h,
+              width: 13.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.teal,
+                image: DecorationImage(
+                  image: AssetImage(ImagePathConstants.profileImage),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            )
+            : Icon(icon,size: 3.h,color: CustomColors.whiteTextColor),
+            SizedBox(width: 4.w),
+            Text(text,style: CommonTextStyles.bold(13.spa, CustomColors.whiteTextColor),),
+          ],
+        ),
+      ),
+    );
+  }
+
 }
